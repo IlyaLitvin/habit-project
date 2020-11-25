@@ -10,10 +10,10 @@ class Profile extends Component {
     birthDate: "",
   };
 
-  handleOnChange = (e) => {
-    const name = e.target.name;
-    this.setState({ [name]: name.value });
+  handleOnChange = ({ target }) => {
+    this.setState({ [target.name]: target.value });
   };
+
   handleOnSubmit = (e) => {
     e.preventDefalut();
     // updateProfile(); добавить локику сохранения профиля
@@ -26,6 +26,7 @@ class Profile extends Component {
   };
 
   render() {
+    const { avatar, height, weight, birthDate } = this.state;
     return (
       <>
         <button type="button">Назад</button>
@@ -33,8 +34,8 @@ class Profile extends Component {
           <label>
             Сменить фото
             <input
-              type="text"
-              value={this.state.avatar}
+              type="file"
+              value={avatar}
               name="avatar"
               onChange={this.handleOnChange}
             />
@@ -42,8 +43,8 @@ class Profile extends Component {
           <label>
             Рост
             <input
-              type="text"
-              value={this.state.height}
+              type="number"
+              value={height}
               name="height"
               onChange={this.handleOnChange}
               placeholder="170 см"
@@ -52,8 +53,8 @@ class Profile extends Component {
           <label>
             Вес
             <input
-              type="text"
-              value={this.state.weight}
+              type="number"
+              value={weight}
               name="weight"
               onChange={this.handleOnChange}
               placeholder="70 кг"
@@ -62,8 +63,8 @@ class Profile extends Component {
           <label>
             Дата рождения
             <input
-              type="text"
-              value={this.state.birthDate}
+              type="date"
+              value={birthDate}
               name="birthDate"
               onChange={this.handleOnChange}
               placeholder="01.01.1990"

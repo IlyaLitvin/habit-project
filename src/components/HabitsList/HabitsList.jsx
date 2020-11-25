@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import HabitItem from "./HabitItem/HabitItem";
+import HabitForm from "./HabitForm/HabitForm";
 
 export default class HabitsList extends Component {
   static propTypes = {
@@ -49,11 +50,13 @@ export default class HabitsList extends Component {
           <ul>
             {habits.map((habit) => {
               return (
-                <HabitItem
-                  key={habit.id}
-                  progress={() => this.toChangeProgress(habit.id)}
-                  title={habit.title}
-                />
+                <>
+                  <HabitItem
+                    key={habit.id}
+                    progress={() => this.toChangeProgress(habit.id)}
+                    title={habit.title}
+                  />
+                </>
               );
             })}
           </ul>
