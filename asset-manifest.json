@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/habit-project/static/css/main.d320a280.chunk.css",
-    "main.js": "/habit-project/static/js/main.1879fa40.chunk.js",
-    "main.js.map": "/habit-project/static/js/main.1879fa40.chunk.js.map",
+    "main.css": "/habit-project/static/css/main.b94cd27c.chunk.css",
+    "main.js": "/habit-project/static/js/main.98916d83.chunk.js",
+    "main.js.map": "/habit-project/static/js/main.98916d83.chunk.js.map",
     "runtime-main.js": "/habit-project/static/js/runtime-main.3f3eed75.js",
     "runtime-main.js.map": "/habit-project/static/js/runtime-main.3f3eed75.js.map",
-    "static/js/2.d66c0ce4.chunk.js": "/habit-project/static/js/2.d66c0ce4.chunk.js",
-    "static/js/2.d66c0ce4.chunk.js.map": "/habit-project/static/js/2.d66c0ce4.chunk.js.map",
+    "static/js/2.5f60bfb6.chunk.js": "/habit-project/static/js/2.5f60bfb6.chunk.js",
+    "static/js/2.5f60bfb6.chunk.js.map": "/habit-project/static/js/2.5f60bfb6.chunk.js.map",
     "index.html": "/habit-project/index.html",
-    "static/css/main.d320a280.chunk.css.map": "/habit-project/static/css/main.d320a280.chunk.css.map",
-    "static/js/2.d66c0ce4.chunk.js.LICENSE.txt": "/habit-project/static/js/2.d66c0ce4.chunk.js.LICENSE.txt"
+    "static/css/main.b94cd27c.chunk.css.map": "/habit-project/static/css/main.b94cd27c.chunk.css.map",
+    "static/js/2.5f60bfb6.chunk.js.LICENSE.txt": "/habit-project/static/js/2.5f60bfb6.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3f3eed75.js",
-    "static/js/2.d66c0ce4.chunk.js",
-    "static/css/main.d320a280.chunk.css",
-    "static/js/main.1879fa40.chunk.js"
+    "static/js/2.5f60bfb6.chunk.js",
+    "static/css/main.b94cd27c.chunk.css",
+    "static/js/main.98916d83.chunk.js"
   ]
 }
