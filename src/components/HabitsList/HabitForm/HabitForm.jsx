@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styles from "./HabitForm.module.css";
+import { v4 as uuidv4 } from "uuid";
 
 export default class HabitForm extends Component {
-  static propTypes = {
-    prop: PropTypes,
-  };
-
   state = {
     title: "",
     comment: "",
@@ -17,13 +14,38 @@ export default class HabitForm extends Component {
 
   handeSubmit = (event) => {
     event.preventDefault();
-    alert(JSON.stringify(this.state, null, 2));
+    const { title, comment, color, repeat, remind } = this.state;
+    const habit = {
+      id: uuidv4(),
+      comment: comment,
+      title: title,
+      color: color,
+      repeat: repeat,
+      remind: remind,
+      startDate: Date.now(),
+      progress: this.toSetProgress(Date.now()),
+    };
+    this.props.toAddHabit(habit);
+    this.setState({
+      title: "",
+      comment: "",
+      repeat: "",
+      color: "#390093",
+      remind: true,
+    });
   };
 
-  handeChange = ({ target }) => {
+  handleChange = ({ target }) => {
     this.setState({
       [target.name]: target.type === "checkbox" ? target.checked : target.value,
     });
+  };
+
+  toSetProgress = (startDate) => {
+    const dateNow = Date.now();
+    const progress =
+      Math.round((dateNow - startDate) * 100) / (21 * 24 * 60 * 60 * 1000);
+    return progress;
   };
 
   render() {
@@ -35,7 +57,9 @@ export default class HabitForm extends Component {
             className={styles.headerWrapper}
             style={{ backgroundColor: this.state.color }}
           >
-            <button type="button">X</button>
+            <button type="button" onClick={this.props.modalToggle}>
+              X
+            </button>
             <h2>Новая привычка</h2>
             <label htmlFor="title">Название</label>
             <input
@@ -43,7 +67,7 @@ export default class HabitForm extends Component {
               type="text"
               value={title}
               placeholder="Зарядка"
-              onChange={this.handeChange}
+              onChange={this.handleChange}
             />
           </div>
 
@@ -53,11 +77,11 @@ export default class HabitForm extends Component {
             type="textarea"
             placeholder="..."
             value={comment}
-            onChange={this.handeChange}
+            onChange={this.handleChange}
           />
 
           <label htmlFor="repeat"></label>
-          <select name="repeat" value={repeat}>
+          <select name="repeat" value={repeat} onChange={this.handleChange}>
             <option value="Каждый день">Каждый день &#5171;</option>
             <option value="Каждый час">Каждый час &#5171;</option>
           </select>
@@ -67,7 +91,7 @@ export default class HabitForm extends Component {
             type="color"
             name="color"
             value={color}
-            onChange={this.handeChange}
+            onChange={this.handleChange}
           />
 
           <label htmlFor="remind"></label>
@@ -75,7 +99,7 @@ export default class HabitForm extends Component {
             type="checkbox"
             name="remind"
             checked={remind}
-            onChange={this.handeChange}
+            onChange={this.handleChange}
           />
 
           <button type="submit">Сохранить</button>

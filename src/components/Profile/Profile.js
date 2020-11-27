@@ -15,7 +15,7 @@ class Profile extends Component {
   };
 
   handleOnSubmit = (e) => {
-    e.preventDefalut();
+    e.preventDefault();
     // updateProfile(); добавить локику сохранения профиля
     this.setState({
       avatar: "",

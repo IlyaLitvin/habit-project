@@ -1,0 +1,19 @@
+.overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+}
+.modal {
+  width: 400px;
+  height: 500px;
+  background-color: #fff;
+  top: 50%;
+  left: 50%;
+  position: relative;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.isHidden {
+  display: none;
+}
