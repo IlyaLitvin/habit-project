@@ -12,6 +12,8 @@ export default class HabitForm extends Component {
     remind: true,
   };
 
+  closeId = null;
+
   handeSubmit = (event) => {
     event.preventDefault();
     const { title, comment, color, repeat, remind } = this.state;
@@ -33,8 +35,12 @@ export default class HabitForm extends Component {
       color: "#390093",
       remind: true,
     });
+    alert(`Your new habit ${title} added`);
+    this.closeId = setTimeout(this.props.modalToggle, 1000);
   };
-
+  componentWillUnmount() {
+    clearTimeout(this.closeId);
+  }
   handleChange = ({ target }) => {
     this.setState({
       [target.name]: target.type === "checkbox" ? target.checked : target.value,
@@ -43,8 +49,9 @@ export default class HabitForm extends Component {
 
   toSetProgress = (startDate) => {
     const dateNow = Date.now();
-    const progress =
-      Math.round((dateNow - startDate) * 100) / (21 * 24 * 60 * 60 * 1000);
+    const progress = Math.round(
+      ((dateNow - startDate) * 100) / (21 * 24 * 60 * 60 * 1000)
+    );
     return progress;
   };
 
