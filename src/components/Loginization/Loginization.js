@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styles from "./Loginization.module.css";
+import { NavLink } from "react-router-dom";
 
 class Loginization extends Component {
   state = {
@@ -14,7 +15,9 @@ class Loginization extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    // alert(JSON.stringify(this.state));
+    this.props.history.push({
+      pathname: "/prolife/habitList",
+    });
   };
 
   render() {
@@ -22,7 +25,7 @@ class Loginization extends Component {
     return (
       <>
         <div className={styles.header}>
-          <button type="button">Назад</button>
+          <NavLink to="/">Назад</NavLink>
         </div>
         <form
           action="submit"

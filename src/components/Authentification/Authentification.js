@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Loginization from "../Loginization/Loginization.js";
 import Registration from "../Registration/Registration.js";
+import { NavLink } from "react-router-dom";
+import styles from "./Authentification.module.css";
 
 export default class Authentification extends Component {
   state = {
@@ -13,24 +15,24 @@ export default class Authentification extends Component {
     ],
   };
 
-  onBtnClick = (e) => {
-    if (e.target.textContent === "Вход") {
-      return <Loginization />;
-    } else {
-      return <Registration />;
-    }
-  };
+  // onBtnClick = (e) => {
+  //   if (e.target.textContent === "Вход") {
+  //     return <Loginization />;
+  //   } else {
+  //     return <Registration />;
+  //   }
+  // };
 
   render() {
     return (
       <>
         <section>
-          <button type="button" onClick={this.onBtnClick}>
+          <NavLink to="/login" className={styles.navLink}>
             Вход
-          </button>
-          <button type="button" onClick={this.onBtnClick}>
+          </NavLink>
+          <NavLink to="/registr" className={styles.navLink}>
             Создать аккаунт
-          </button>
+          </NavLink>
         </section>
       </>
     );

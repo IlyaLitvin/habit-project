@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styles from "./Registration.module.css";
+import { NavLink } from "react-router-dom";
 
 class Registration extends Component {
   state = {
@@ -14,16 +15,18 @@ class Registration extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    alert(JSON.stringify(this.state));
+    this.props.history.push({
+      pathname: "/profile",
+    });
   };
   render() {
     const { name, surname, tel } = this.state;
     return (
       <>
         <div className={styles.header}>
-          <button type="button" className={styles.toBack}>
+          <NavLink to="/" className={styles.toBack}>
             Назад
-          </button>
+          </NavLink>
         </div>
         <form
           action="submit"

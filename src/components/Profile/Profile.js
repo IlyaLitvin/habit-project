@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styles from "./Profile.module.css";
+import { NavLink } from "react-router-dom";
 
 class Profile extends Component {
   state = {
@@ -29,7 +30,7 @@ class Profile extends Component {
     const { avatar, height, weight, birthDate } = this.state;
     return (
       <>
-        <button type="button">Назад</button>
+        <NavLink to="/">Назад</NavLink>
         <form onSubmit={this.handleOnSubmit}>
           <label>
             Сменить фото
@@ -70,8 +71,9 @@ class Profile extends Component {
               placeholder="01.01.1990"
             />
           </label>
-          <input type="submit" value="Создать" />
+          <input type="submit" value="Добавить данные" />
         </form>
+        <NavLink to="/profile/habitList">Перейти в профиль</NavLink>
       </>
     );
   }
