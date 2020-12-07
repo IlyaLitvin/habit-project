@@ -3,19 +3,25 @@ import PropTypes from "prop-types";
 import HabitItem from "./HabitItem/HabitItem";
 import Modal from "../Modal";
 import HabitForm from "./HabitForm";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+// import Context from "../../context/Context"; шаг №1
+// import UserContext from "../../context/Context"; шаг №2
+import withContext from "../hoc/withContext";
 
-export default class HabitsList extends Component {
+class HabitsList extends Component {
   state = {
-    habits: [
-      {
-        id: "",
-        title: "Зарядка",
-        startDate: "",
-        progress: "",
-      },
-    ],
+    habits: [],
   };
+
+  componentDidMount() {
+    const array = JSON.parse(localStorage.getItem("state")) || [];
+    this.setState({ habits: array });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState !== this.state)
+      localStorage.setItem("state", JSON.stringify(this.state.habits));
+  }
 
   toAddHabit = (habit) => {
     this.setState((prevState) => ({
@@ -35,11 +41,15 @@ export default class HabitsList extends Component {
 
   render() {
     const { habits } = this.state;
+    const { user } = this.props;
     return (
+      // <UserContext.Consumer>
+      //   {(user) => (
       <>
         <header>
+          <NavLink to="/">Назад</NavLink>
+          <img src={user.avatar} alt={user.name} />
           <div>Мой аккаунт</div>
-          <NavLink to="/profile/habitList">X</NavLink>
         </header>
         {this.props.showModal && (
           <Modal modalToggle={this.props.modalToggle}>
@@ -51,15 +61,13 @@ export default class HabitsList extends Component {
         )}
         <div>Календарь</div>
         <h1>Мои привычки</h1>
-        {habits.length ? (
+        {user.habits.length ? (
           <ul>
-            {habits.map((habit) => {
+            {user.habits.map((habit) => {
               return (
-                <HabitItem
-                  key={habit.id}
-                  title={habit.title}
-                  progress={habit.progress}
-                />
+                <Link key={habit.id} to={`/profile/habitList/${habit.id}`}>
+                  <HabitItem title={habit.title} progress={habit.progress} />
+                </Link>
               );
             })}
           </ul>
@@ -70,6 +78,9 @@ export default class HabitsList extends Component {
           +
         </button>
       </>
+      //   )}
+      // </UserContext.Consumer>
     );
   }
 }
+export default withContext(HabitsList);

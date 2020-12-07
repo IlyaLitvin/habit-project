@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 //import styles from './HabitItem.styles';
+import { Link } from "react-router-dom";
 
 const HabitItem = ({ title, progress }) => (
   <li>

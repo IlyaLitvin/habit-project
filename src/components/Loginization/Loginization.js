@@ -16,7 +16,7 @@ class Loginization extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.history.push({
-      pathname: "/prolife/habitList",
+      pathname: "/profile/habitList",
     });
   };
 
